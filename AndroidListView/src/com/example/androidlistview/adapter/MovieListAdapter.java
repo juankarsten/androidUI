@@ -1,6 +1,7 @@
 package com.example.androidlistview.adapter;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -19,14 +20,16 @@ import android.widget.TextView;
 
 public class MovieListAdapter extends BaseAdapter{
 
-	private ArrayList<Movie> movies;
+	private List<Movie> movies;
 	private Activity activity;
 	private LayoutInflater layoutInflater;
 	private ImageLoader imageLoader;
 	
-	public MovieListAdapter() {
+	public MovieListAdapter(Activity activity,
+			List<Movie> movies) {
+		this.activity = activity;
+		this.movies = movies;
 		imageLoader = AppController.getInstance().getImageLoader();
-		movies = new ArrayList<>();
 	}
 	
 	@Override
@@ -74,7 +77,7 @@ public class MovieListAdapter extends BaseAdapter{
 		title.setText(m.getTitle());
 		rating.setText("Rating: "+ m.getRating());
 		genre.setText(m.getGenres().toString());
-		year.setText(m.getYear());
+		year.setText(""+m.getYear());
 		
 		return convertView;
 	}

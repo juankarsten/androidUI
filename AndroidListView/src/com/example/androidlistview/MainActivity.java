@@ -1,17 +1,40 @@
 package com.example.androidlistview;
 
-import android.support.v7.app.ActionBarActivity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends ListActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		
+		String[] products = getResources().getStringArray(R.array.products);
+		setListAdapter(new ArrayAdapter<String>(this,R.layout.list_item, 
+				R.id.list_item, products));
+		
+		ListView listView = getListView();
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				String product = ((TextView) view).getText().toString();
+				Intent intent = new Intent(getApplicationContext(), SingleItemActivity.class);
+				intent.putExtra("product", product);
+				startActivity(intent);
+			}
+			
+		});
 	}
 
 	@Override

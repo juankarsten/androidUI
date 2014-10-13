@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="genre">#666666</color>
+    <color name="year">#888888</color>
+    <color name="rating">#444444</color>
+    <color name="title">#000000</color>
+    <color name="list_divider">#808080</color>
+    <color name="list_row_start_color">#dcd9d2</color>
+    <color name="list_row_end_color">#f5f3ee</color>
+    <color name="list_row_hover_start_color">#ebeef0</color>
+    <color name="list_row_hover_end_color">#ebeef0</color>
+</resources>
